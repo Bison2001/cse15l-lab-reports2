@@ -59,4 +59,50 @@ public void testMean() {
 ```
 --- **The symptom, as the output of running the tests (provide it as a screenshot of running JUnit with at least the two inputs above)**
 
+The following sceenshot is an example of failure inducing input.
 
+![image](https://user-images.githubusercontent.com/77051146/215225034-0016f758-429c-4370-ba1a-e63ed176c92b.png)
+
+The following sceenshot is an example of input that does not induce failure.
+
+![image](https://user-images.githubusercontent.com/77051146/215225262-2404619d-90f1-4009-a8c4-efb24f6550f6.png)
+
+Since the test pass, there is no output.
+
+-- **The bug, as the before-and-after code change required to fix it (as two code blocks in Markdown)**
+
+The following is the buggy program:
+```
+static double averageWithoutLowest(double[] arr) {
+    if(arr.length < 2) { return 0.0; }
+    double lowest = arr[0];
+    for(double num: arr) {
+      if(num < lowest) { lowest = num; }
+    }
+    double sum = 0;
+    for(double num: arr) {
+      if(num != lowest) { sum += num; }
+    }
+    return sum / (arr.length - 1);
+  }
+```
+
+The following is the fixed program:
+```
+static double averageWithoutLowest(double[] arr) {
+    if(arr.length < 2) { return 0.0; }
+    double lowest = arr[0];
+    for(double num: arr) {
+      if(num < lowest) { lowest = num; }
+    }
+    double sum = 0;
+    for(double num: arr) {
+      sum += num;
+    }
+    sum-=lowest;
+    return sum / (arr.length - 1);
+  }
+```
+
+-- **Briefly describe why the fix addresses the issue.**
+In the buggy program, it first finds the min value of the array. Then it loops through the array, if the value does not equal min, then add it to the running sum, otherwise just skip the value. So, if there are two min values in the array, they will both be removed. So, I changed the code to first find the min value; then I calculate the sum without removing any value. After calculating the running sum, I subtract the min and calculate the average. In this way, I can calculate the average with one min removed.
