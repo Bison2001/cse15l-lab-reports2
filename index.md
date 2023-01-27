@@ -38,3 +38,25 @@ The following is the value of relevant fields:
 `parameters` is an array of String ["s", "Bison"]
 
 `str` is the target out that I want to display: "Hello\nBison\n"
+
+# Part 2
+
+I will describe bug in the method `averageWithoutLowest`.
+
+-- **A failure-inducing input for the buggy program, as a JUnit test and any associated code**
+```
+public void testMean() {
+    double[] input1 = {1, 1, 2};
+    assertEquals(1.5, ArrayExamples.averageWithoutLowest(input1), 0.000001);
+}
+```
+--- **An input that doesn’t induce a failure, as a JUnit test and any associated code**
+```
+public void testMean() {
+    double[] input1 = {1, 3, 2};
+    assertEquals(2.5, ArrayExamples.averageWithoutLowest(input1), 0.000001);
+}
+```
+--- **The symptom, as the output of running the tests (provide it as a screenshot of running JUnit with at least the two inputs above)**
+
+
