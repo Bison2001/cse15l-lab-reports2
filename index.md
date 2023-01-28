@@ -105,4 +105,10 @@ static double averageWithoutLowest(double[] arr) {
 ```
 
 -- **Briefly describe why the fix addresses the issue.**
+
 In the buggy program, it first finds the min value of the array. Then it loops through the array, if the value does not equal min, then add it to the running sum, otherwise just skip the value. So, if there are two min values in the array, they will both be removed. So, I changed the code to first find the min value; then I calculate the sum without removing any value. After calculating the running sum, I subtract the min and calculate the average. In this way, I can calculate the average with one min removed.
+
+# Part 3
+
+-- **In a couple of sentences, describe something you learned from lab in week 2 or 3 that you didn’t know before.**
+I learned how to set up remote connection using ssh. I learned how to set up a server. I learned how to correctly use Junit test.
